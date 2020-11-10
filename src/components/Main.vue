@@ -94,61 +94,67 @@ export default {
 		.then((response) => response.json())
 		.then(json => {
   // Do something with the data
+  // // this.motorbikes = json.sheet1 <- If this code applied that meant will get all data and image from the googlesheet
   this.motorbikes = json.sheet1
-  console.log(json.sheet1);
+  // console.log(json.sheet1);
 });
-	},
-	
-	data(){
-		return{
-			motorbikes:[{
-				name:"Harley Davidson Fatboy",
-				location:"Seremban Bandar Sri Sendayan, Negeri Sembilan",
-				img:"../images/HarleyDavidsonFatboy.jpg"
-			},
-			{
-				name:"Yamaha 135C",
-				location:"Putrajaya Central, Selangor",
-				img:"../images/yamaha.jpg"
-			},
-			{
-				name:"KTM 250 TPI",
-				location:"Damansara Perdana Selangor",
-				img:"../images/KTM250TPI.jpg"
-			}],
+  
+},
 
-			cities:[
-			{
-				id:'1',
-				name:"Seremban"
-			},
-			{
-				id:'2',
-				name:"Kuala Lumpur"
-			},
-			{
-				id:'3',
-				name:"Melaka"
-			},
-			{
-				id:'4',
-				name:"Perak"
-			}
-			],
+data(){
+	return{
+		//This is local info. Maybe need change to get from googlesheet
+		motorbikes:[
+		//If want use local image can use to define name, location and image as below
+		// {
+		// 	name:"Harley Davidson Fatboy",
+		// 	location:"Seremban Bandar Sri Sendayan, Negeri Sembilan",
+		// 	img:"../images/HarleyDavidsonFatboy.jpg"
+		// },
+		// {
+		// 	name:"Yamaha 135C",
+		// 	location:"Putrajaya Central, Selangor",
+		// 	img:"../images/yamaha.jpg"
+		// },
+		// {
+		// 	name:"KTM 250 TPI",
+		// 	location:"Damansara Perdana Selangor",
+		// 	img:"../images/KTM250TPI.jpg"
+		// }
+		],
 
-			pickupdate:'',
-			returndate:'',
-			citySelected:'Seremban'
+		cities:[
+		{
+			id:'1',
+			name:"Seremban"
+		},
+		{
+			id:'2',
+			name:"Kuala Lumpur"
+		},
+		{
+			id:'3',
+			name:"Melaka"
+		},
+		{
+			id:'4',
+			name:"Perak"
 		}
+		],
+
+		pickupdate:'',
+		returndate:'',
+		citySelected:'Seremban'
+	}
+},
+
+methods:{
+	detailClick: function(id){
+		console.log(id)
+		this.$router.push({name:'Car',params:{id:id}})
 	},
 
-	methods:{
-      detailClick: function(id){
-        console.log(id)
-         this.$router.push({name:'Car',params:{id:id}})
-      },
-
-		searchClick: function(){
+	searchClick: function(){
 
 			//To do this also need update in index.js
 			this.$router.push({name:'Detail',params:{sendDate:this.pickupdate,returnDate:this.returndate,city:this.citySelected}})

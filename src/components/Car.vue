@@ -14,8 +14,8 @@ export default {
   name: 'Car',
   mounted:function(){
     // Normally do some initialization For aexmaple : call the API
-    console.log('when page is loaded do something')
-    let url = 'https://api.sheety.co/4db58997dd33ab7eaa3d621c48bdea06/motors/sheet1/'+this.id;
+    alert('when page is loaded do something.car')
+    let url = 'https://api.sheety.co/6a294e74779b4334bc93620758fe8c26/motors/sheet1/'+this.id;
     fetch(url)
     .then((response) => response.json())
     .then(json => {
